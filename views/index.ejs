@@ -8,6 +8,12 @@
 </head>
 <body>
     <div class="container">
+        <% const items = [ 
+            {id: 1, name: "Asep Sumarna"},
+            {id: 2, name: "Kukus Ismail"},
+            {id: 3, name: "Steve Lou"}
+        ]; %>
+
         <div class="header">
             <h1>SELAMAT DATANG</h1>
             <h2>Contoh CRUD menggunakan Express, NodeJS, dan PostgreSQL</h2>
@@ -17,35 +23,16 @@
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama Lengkap</th>
-                    <th>Action</th> 
+                    <th>Nama Lengkap</th> 
                 </tr>
              </thead>
              <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Asep Sumarna</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Kukus Ismail</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Steve Lou</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Hapus</button>
-                    </td>
-                </tr>
+                 <% items.forEach((item) => { %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><%= item.name %></td>
+                    </tr> 
+                 <% }); %>
              </tbody>
         </table>
             
