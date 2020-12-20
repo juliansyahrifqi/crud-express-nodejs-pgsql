@@ -8,37 +8,46 @@
 </head>
 <body>
     <div class="container">
-        <% const items = [ 
-            {id: 1, name: "Asep Sumarna"},
-            {id: 2, name: "Kukus Ismail"},
-            {id: 3, name: "Steve Lou"}
-        ]; %>
-
         <div class="header">
             <h1>SELAMAT DATANG</h1>
             <h2>Contoh CRUD menggunakan Express, NodeJS, dan PostgreSQL</h2>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>No. </th>
-                    <th>Nama Lengkap</th> 
-                </tr>
-             </thead>
-             <tbody>
-                 <% items.forEach((item) => { %>
+        
+        <form id="add" action="/add" method="post">
+            <input type="text" name="nama">
+            <input type="submit" value="Tambah">
+        </form>
+
+        <% if(users.length != 0) { %>
+            <table>
+                <thead> 
                     <tr>
-                        <td><%= item.id %></td>
-                        <td><%= item.name %></td>
-                    </tr> 
-                 <% }); %>
-             </tbody>
-        </table>
-            
-      
+                        <th>No. </th>
+                        <th>Nama Lengkap</th> 
+                        <th>Action</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                     <% users.forEach((user) => { %>
+                        <tr>
+                            <td><%= user.user_id %></td>
+                            <td><%= user.nama_user %></td>
+                            <td>
+                                <form action="/delete/<%= user.user_id %>" method="post">
+                                    <input type="submit" value="Hapus">
+                                </form>
+                            </td>
+                            <td><a href="/edit/<%= user.user_id %>">Edit</a></td>
+                        </tr> 
+                        
+                     <% }); %>
+                 </tbody>
+            </table>
+        <% } else { %>
+            <h1>Belum ada data!</h1>
+        <% } %>
         
     </div>
-    
 </body>
 </html>
