@@ -58,3 +58,16 @@ app.post('/add', (req, res) => {
     });
 });
 
+app.post('/delete/:id', (req, res) => {
+    const sqlDelete = "DELETE FROM Users WHERE user_id = $1";
+
+    pool.query(sqlDelete, [req.params.id], (err, result) => {
+        if(err) {
+            return console.log(err.message);
+        }
+
+        res.redirect('/');
+    });
+    
+});
+
