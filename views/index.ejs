@@ -5,49 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD With Express, Node JS, and PostgreSQL</title>
     <link rel="stylesheet" href="/css/style.css">
+    
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>SELAMAT DATANG</h1>
-            <h2>Contoh CRUD menggunakan Express, NodeJS, dan PostgreSQL</h2>
-        </div>
-
-        
-        <form id="add" action="/add" method="post">
-            <input type="text" name="nama">
-            <input type="submit" value="Tambah">
+    <div class="container">        
+        <form id="add" action="/add" method="post" class="form">
+            <div class="form-group">
+                <input type="text" name="nama" class="form-control" placeholder="Masukkan nama seseorang disini ....">
+                <input type="submit" value="Tambah" class="btn">
+            </div>  
         </form>
-
+    
         <% if(users.length != 0) { %>
             <table>
                 <thead> 
                     <tr>
-                        <th>No. </th>
+                        <th>NO. </th>
                         <th>Nama Lengkap</th> 
-                        <th>Action</th>
+                        <th colspan="2">Action</th>
                     </tr>
                  </thead>
                  <tbody>
                      <% users.forEach((user) => { %>
                         <tr>
-                            <td><%= user.user_id %></td>
+                            <td><b><%= user.user_id %></b></td>
                             <td><%= user.nama_user %></td>
                             <td>
-                                <form action="/delete/<%= user.user_id %>" method="post">
-                                    <input type="submit" value="Hapus">
-                                </form>
+                                <div class="action">
+                                    <form action="/delete/<%= user.user_id %>" method="post">
+                                        <input type="submit" value="Hapus" class="action-delete">
+                                    </form>
+                                    
+                                    <div class="action-edit">
+                                        <a href="/edit/<%= user.user_id %>">Edit</a>
+                                    </div>  
+                                </div>
                             </td>
-                            <td><a href="/edit/<%= user.user_id %>">Edit</a></td>
-                        </tr> 
-                        
+                        </tr>   
                      <% }); %>
                  </tbody>
             </table>
         <% } else { %>
             <h1>Belum ada data!</h1>
         <% } %>
-        
     </div>
+
+    <footer>
+        <p class="title">CRUD With Express, Node JS, and PostgreSQL</p>
+        <p>Created by: Rifqi Pratama</p>
+        <p>Source Code: <a href="https://github.com/juliansyahrifqi/crud-express-nodejs-pgsql">https://github.com/juliansyahrifqi/crud-express-nodejs-pgsql</a></p>
+    </footer>
 </body>
 </html>

@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-    <div>
-        <form action="/update/<%= user.user_id %>" method="POST">
-            <input type="text" value="<%= user.nama_user %>" name="nama">
-            <input type="submit" value="Edit">
+        <h1 class="edit-title">EDIT DATA</h1>
+        
+        <form action="/update/<%= user.user_id %>" method="POST" class="form">
+            <div class="form-group">
+                <input type="text" value="<%= user.nama_user %>" name="nama" class="form-control">
+                <input type="submit" value="Edit" class="btn">
+            </div>
         </form>
-    </div>
+
+        <footer>
+            <p class="title">CRUD With Express, Node JS, and PostgreSQL</p>
+            <p>Created by: Rifqi Pratama</p>
+            <p>Source Code: <a href="https://github.com/juliansyahrifqi/crud-express-nodejs-pgsql">https://github.com/juliansyahrifqi/crud-express-nodejs-pgsql</a></p>
+        </footer>
 </body>
 </html>
