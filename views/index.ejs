@@ -8,10 +8,12 @@
     
 </head>
 <body>
-    <div class="container">        
-        <form id="add" action="/add" method="post" class="form">
+    <div class="container"> 
+        
+        <input type="checkbox" id="check">
+        <form name="addForm" id="add" action="/add" onsubmit="return validateForm()" method="post" class="form" autocomplete="off">
             <div class="form-group">
-                <input type="text" name="nama" class="form-control" placeholder="Masukkan nama seseorang disini ....">
+                <input type="text" name="nama" class="form-control" id="input-add" placeholder="Masukkan nama seseorang disini ....">
                 <input type="submit" value="Tambah" class="btn">
             </div>  
         </form>
@@ -55,5 +57,38 @@
         <p>Created by: Rifqi Pratama</p>
         <p>Source Code: <a href="https://github.com/juliansyahrifqi/crud-express-nodejs-pgsql">https://github.com/juliansyahrifqi/crud-express-nodejs-pgsql</a></p>
     </footer>
+
+    <script>
+        const checkbox = document.getElementById('check');
+        const currentTheme = localStorage.getItem("theme");
+
+        if(currentTheme == "dark") {
+            document.body.classList.toggle("dark-theme");
+            checkbox.checked = true;
+        }
+
+        function validateForm() {
+            const addForm = document.forms["addForm"]["nama"].value;
+
+            if(addForm == "") {
+                alert("Nama tidak boleh kosong!");
+                return false;
+            }
+        }
+
+        check.addEventListener('change', () => {
+           document.body.classList.toggle("dark-theme"); 
+
+           let theme = "light";
+           
+           if(document.body.classList.contains("dark-theme")) {
+               theme = "dark";
+           }
+
+           localStorage.setItem("theme", theme);
+        });
+        
+        
+    </script>
 </body>
 </html>
