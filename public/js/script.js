@@ -1,4 +1,4 @@
-const checkbox = document.getElementById('check');
+const checkbox = document.getElementById('checkbox');
 const currentTheme = localStorage.getItem("theme");
 const btn = document.querySelector(".btn");
 
@@ -8,7 +8,7 @@ if(currentTheme == "dark") {
     checkbox.checked = true;
 }
 
-check.addEventListener('change', () => {
+checkbox.addEventListener('change', () => {
     document.body.classList.toggle("dark-theme"); 
 
     let theme = "light";
